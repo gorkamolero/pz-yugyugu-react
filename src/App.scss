@@ -1,0 +1,53 @@
+@import './styles/modern-normalize.css';
+$baseFontSize: 15;
+$scale: .65;
+@import './styles/typebase';
+
+#pz-email-builder {
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, .75);
+  height: 100vh;
+  background: whitesmoke;
+  padding: 2rem;
+
+  & > div {
+    border: 1px solid gainsboro;
+    background: white;
+    height: 100%;
+  }
+
+  .builder {
+    
+    display: flex;
+    & > * {
+      flex: 1;
+      & + * { border-left: 1px solid gainsboro }
+    }
+  }
+  .controlContainer { padding: 2rem; }
+  .control {
+    position: relative;
+    
+    &Nav {
+      position: absolute;
+      top: 0;
+      z-index: 999;
+      padding: 2rem;
+  
+      & > * + * { margin-left: 1rem; }
+  
+      &.builderNav { right: 0; }
+      &.viewNav { left: 0; }
+    }
+  }
+
+  .preview {
+    margin: 0 auto;
+    max-width: 100%;
+    transition: max-width 300ms ease;
+    &.mobile {
+      max-width: 320px;
+      /* max-height: 480px; */
+    }
+  }
+}
