@@ -10,7 +10,7 @@ function Home() {
       <p>
         Welcome to Yugyugu
       </p>
-      <Link to="/builder">
+      <Link to="/builder/content">
         Enter the builder
       </Link>
     </header>

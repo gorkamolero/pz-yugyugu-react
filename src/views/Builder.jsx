@@ -4,14 +4,17 @@ import { Fab } from '@material-ui/core'
 import { Build, Palette } from '@material-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 
+import { TemplateProvider, initialState, reducer } from '../state/Template'
+
 import Preview from '../components/preview/Preview'
 import Content from '../components/content/Content'
 import Style from '../components/style/Style'
 
-function Home() {
+function Builder() {
   let match = useRouteMatch()
   return (
-    <div className="builder">
+    <TemplateProvider initialState={initialState} reducer={reducer}>
+      <div className="builder">
       <div className="control">
         <nav className="controlNav builderNav">
           <Fab component={Link} to="/builder/content">
@@ -22,7 +25,7 @@ function Home() {
           </Fab>
         </nav>
         <Scrollbars autoHide style={{width: '100%', height: '100%'}}>
-          <div className="controlContainer">
+          <main className="controlContainer">
             <Switch>
               <Route path={`${match.path}/content`}>
                 <Content />
@@ -31,13 +34,14 @@ function Home() {
                 <Style />
               </Route>
             </Switch>
-          </div>
+          </main>
         </Scrollbars>
       </div>
       <Preview>
       </Preview>
     </div>
+    </TemplateProvider>
   )
 }
 
-export default Home
+export default Builder
