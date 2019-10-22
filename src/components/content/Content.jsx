@@ -2,17 +2,14 @@ import React from 'react'
 import { useTemplate } from '../../state/Template'
 import Setting from './Setting'
 
-const Section = ({ title, settings })  => {
-  console.log(title, settings)
-  return (
-    <section>
-      <h1>{title}</h1>
-      {
-        settings.map((props) => <Setting key={props.id} {...props} />)
-      }
-    </section>
-  )
-}
+const Section = ({ title, settings })  => (
+  <section>
+    <h1>{title}</h1>
+    { settings.map((props) => (
+      <Setting key={props.id} {...props} />
+    )) }
+  </section>
+)
 
 
 function Content() {

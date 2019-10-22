@@ -5,16 +5,16 @@ export const TemplateContext = createContext()
 
 export const initialState = dummy
 
-export const reducer = (state, {type, id, value}) => {
+export const TemplateReducer = (state, {type, id, value}) => {
+  console.log(type, id, value)
   switch (type) {
     case 'updateField':
       return {
         ...state,
-        
-        // settings: {
-        //   ...state.settings,
-        //   oid: value
-        // }
+        settings: {
+          ...state.settings,
+          [id]: value
+        }
       }
       
     default: return state

@@ -4,7 +4,7 @@ import { Fab } from '@material-ui/core'
 import { Build, Palette } from '@material-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import { TemplateProvider, initialState, reducer } from '../state/Template'
+import { TemplateProvider, initialState, TemplateReducer } from '../state/Template'
 
 import Preview from '../components/preview/Preview'
 import Content from '../components/content/Content'
@@ -13,7 +13,7 @@ import Style from '../components/style/Style'
 function Builder() {
   let match = useRouteMatch()
   return (
-    <TemplateProvider initialState={initialState} reducer={reducer}>
+    <TemplateProvider initialState={initialState} reducer={TemplateReducer}>
       <div className="builder">
       <div className="control">
         <nav className="controlNav builderNav">
