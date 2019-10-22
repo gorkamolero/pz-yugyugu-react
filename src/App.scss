@@ -1,14 +1,35 @@
 @import './styles/modern-normalize.css';
+@import './styles/reset.css';
 $baseFontSize: 15;
 $scale: .65;
-@import './styles/typebase';
+//@import './styles/typebase';
 
-#pz-email-builder {
+#pz-email-builder, .App {
   font-family: 'Roboto', sans-serif;
   color: rgba(0, 0, 0, .75);
   height: 100vh;
-  background: whitesmoke;
-  padding: 2rem;
+  background: rgba(0, 0, 0, 0.24);
+
+  &Title{
+    p{
+      color: black;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  }
+  &Menu{
+    button{
+      margin-left: 5px;
+    }
+  }
+
+  &Header{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
 
   & > div {
     border: 1px solid gainsboro;
@@ -17,28 +38,40 @@ $scale: .65;
   }
 
   .builder {
-    
     display: flex;
+      position: relative;
     & > * {
       flex: 1;
       & + * { border-left: 1px solid gainsboro }
     }
+
   }
+
   .controlContainer { padding: 2rem; }
   .control {
+
     position: relative;
-    
+    &Header {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 4rem;
+      width: 100%;
+      border-bottom: 1px solid gainsboro;
+    }
     &Nav {
       position: absolute;
       top: 0;
       z-index: 999;
       padding: 2rem;
-  
+
       & > * + * { margin-left: 1rem; }
-  
+
       &.builderNav { right: 0; }
       &.viewNav { left: 0; }
     }
+
+
   }
 
   .preview {
