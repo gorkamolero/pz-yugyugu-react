@@ -12,8 +12,10 @@ export const TemplateReducer = (state, {type, id, value}) => {
       return {
         ...state,
         settings: {
-          ...state.settings,
-          [id]: value
+          ...state.settings, [id]: {
+            ...state.settings[id],
+            value
+          }
         }
       }
       
