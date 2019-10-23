@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch, Route, useRouteMatch, Link } from "react-router-dom"
-import { Fab } from '@material-ui/core'
-import { Build, Palette, ArrowBack } from '@material-ui/icons'
+import { ArrowBack } from '@material-ui/icons'
 
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -15,6 +14,7 @@ import Style from '../components/style/Style'
 
 function Home() {
   let match = useRouteMatch();
+  
   return (
     <div className="builder">
       <div className="control">
@@ -53,7 +53,6 @@ function Home() {
       
       <Preview>
       </Preview>
-      
       
     </div>
   )

@@ -5,7 +5,7 @@ import Home from './views/Home'
 import Builder from './views/Builder'
 import TemplateSelector from './views/TemplateSelector.jsx'
 
-import PZ_Button from "./components/ui/pz-button";
+import PzButton from "./components/ui/PzButton";
 
 import './App.scss'
 
@@ -17,12 +17,12 @@ function App() {
         <header className="AppHeader">
           <div className="AppTitle">
             <Link to={"/"}>
-              <PZ_Button buttonText={"Email Builder"}/>
+              <PzButton buttonText={"Email Builder"}/>
             </Link>
           </div>
           <div className="AppMenu">
-            <PZ_Button buttonText={"Save"}/>
-            <PZ_Button buttonText={"Exit"}/>
+            <PzButton buttonText={"Save"}/>
+            <PzButton buttonText={"Exit"}/>
           </div>
         </header>
         <Switch>
