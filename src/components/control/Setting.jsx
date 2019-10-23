@@ -6,14 +6,10 @@ const Setting = ({
   id,
   title,
   type,
-  value: initialValue,
+  value,
 }) => {
-  const [data, dispatch] = useTemplate()
-  const [value, setValue] = React.useState(data.settings[id].value)
-
-  React.useEffect(() => {
-    dispatch({ type: 'updateField', id, value })
-  }, [value, dispatch, id]);
+  const [, dispatch] = useTemplate()
+  console.log(type)
 
   return (
     <TextField
@@ -22,7 +18,7 @@ const Setting = ({
       fullWidth
       margin="normal"
       variant="outlined"
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => dispatch({ type: 'updateField', id, value: e.target.value })}
     />
   )
 }
