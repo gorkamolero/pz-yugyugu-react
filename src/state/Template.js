@@ -1,9 +1,9 @@
 import React, {createContext, useContext, useReducer } from 'react'
-import dummy from './client.js'
+import clientDummy from './client.js'
 
 export const endpoint = 'http://localhost:3001/templates'
 
-const initialState = dummy
+const initialState = clientDummy
 
 export const TemplateContext = createContext()
 
@@ -43,7 +43,13 @@ export const fetchData = async (dispatch) => {
   dispatch({
     type: 'receiveData',
     payload: json[0]
-  });
+  })
+}
+
+export const sendData = async(data, dispatch) => {
+  const response = window.parent.generateEmailPreview(data)
+  // If response...
+  fetchData(dispatch)
 }
 
 export const TemplateProvider = ({children}) => {

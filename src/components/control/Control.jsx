@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTemplate } from '../../state/Template'
+import { useTemplate, sendData } from '../../state/Template'
 import Setting from './Setting'
 import { Button } from '@material-ui/core'
 
@@ -16,10 +16,13 @@ const Section = ({ title, settings })  => (
 
 
 function Control() {
-  const [data] = useTemplate()
+  const [data, dispatch] = useTemplate()
   
   const sendToAPI = () => {
-    // console.log(data)
+    if(!data) return
+    if(!data.changed) return
+
+    sendData(data.changed, dispatch)
   }
 
   return (

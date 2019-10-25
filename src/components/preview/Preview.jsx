@@ -18,7 +18,7 @@ function Preview(props) {
       <div className={`controlContainer preview ${view}`}>
         {
           data && data.html
-          ? <iframe srcdoc={data.html} frameBorder="0" />
+          ? <iframe title="Preview" srcdoc={data.html} frameBorder="0" />
           : (
           <Scrollbars autoHide style={{width: '100%', height: '100%'}}>  
             <PreviewSkeleton />

@@ -49,7 +49,7 @@ export default {
 				{
 					id: 4,
 					type:'all',
-					settings:[
+					settings: [
 						{key:'font-family',	value:'Raleway, Arial'},
 						{key:'font-weight',	value:'400'}
 					]
@@ -123,7 +123,7 @@ export default {
 						}
 					]				
 				}			
-			]		
+			]
 		}
 	},
 }
