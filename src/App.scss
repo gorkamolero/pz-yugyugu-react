@@ -1,14 +1,20 @@
 @import './styles/modern-normalize.css';
-$baseFontSize: 15;
-$scale: .45;
-@import './styles/typebase';
+$padding: 12px;
+$doublePadding: 24px;
+// $baseFontSize: 15;
+// $scale: .45;
+// @import './styles/typebase';
 
 #pz-email-builder {
   font-family: 'Roboto', sans-serif;
+  font-size: 15px;
   color: rgba(0, 0, 0, .75);
   height: 100vh;
   background: whitesmoke;
-  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+
 
   & > div {
     border: 1px solid gainsboro;
@@ -17,6 +23,7 @@ $scale: .45;
   }
 
   .builder {
+    flex: 1;
     
     display: flex;
     & > * {
@@ -26,7 +33,7 @@ $scale: .45;
   }
   .controlContainer {
     height: 100%;
-    padding: 2rem;
+    // padding: $doublePadding;
     &.preview { padding: 0; }
   }
   .control {
@@ -36,12 +43,17 @@ $scale: .45;
       position: absolute;
       top: 0;
       z-index: 999;
-      padding: 2rem;
+      padding: $padding;
   
-      & > * + * { margin-left: 1rem; }
+      & > * + * { margin-left: $padding; }
   
       &.builderNav { right: 0; }
-      &.viewNav { left: 0; }
+      
+      &.viewNav {
+        right: 0;
+        bottom: 0;
+        top: auto;
+      }
     }
   }
 
@@ -57,6 +69,21 @@ $scale: .45;
     &.mobile {
       max-width: 320px;
       /* max-height: 480px; */
+    }
+  }
+
+  .appbar {
+    box-shadow: none;
+  }
+
+  .active {
+    background: gainsboro;
+  }
+
+  @media (min-width: 960px) {
+    .MuiContainer-root {
+      padding-left: $doublePadding;
+      padding-right: $doublePadding;
     }
   }
 }

@@ -1,16 +1,18 @@
 import React, {createContext, useContext, useReducer } from 'react'
 import clientDummy from './client.js'
 
+const templateID = 1
+
 export const endpoint = 'http://localhost:3001/templates'
 
 const initialState = clientDummy
 
 export const TemplateContext = createContext()
 
-export const TemplateReducer = (state, {type, id, value, payload}) => {
+export const TemplateReducer = (state, {type, id, value, data}) => {
   switch (type) {
     case 'receiveData': {
-      return { ...payload }
+      return { ...data }
     }
     case 'updateField':
       return {
@@ -27,6 +29,10 @@ export const TemplateReducer = (state, {type, id, value, payload}) => {
           [id]: value
         }
       }
+    case 'setPreview': return {
+      ...state,
+      html: data.html
+    }
     case 'fetchStart': return { ...state, loaded: false }
     case 'fetchEnd': return { ...state, loaded: true }
       
@@ -36,20 +42,32 @@ export const TemplateReducer = (state, {type, id, value, payload}) => {
 
 export const fetchData = async (dispatch) => {
   dispatch({ type: 'fetchStart' });
-  const response = await fetch(endpoint);
-  const json = await response.json();
-  dispatch({ type: 'fetchEnd' })
-  
-  dispatch({
-    type: 'receiveData',
-    payload: json[0]
+
+  window.parent.api.getTemplate(templateID, (data) => {
+    dispatch({
+      type: 'receiveData',
+      data
+    })
+
+    dispatch({ type: 'fetchEnd' })
+  })  
+}
+
+export const getPreview = async (newSettings, dispatch) => {
+  dispatch({ type: 'fetchStart' })
+
+  window.parent.api.getPreview(templateID, newSettings, (data) => {
+    dispatch({ type: 'setPreview', data })
+
+    dispatch({ type: 'fetchEnd' })
   })
 }
 
-export const sendData = async(data, dispatch) => {
-  const response = window.parent.generateEmailPreview(data)
-  // If response...
-  fetchData(dispatch)
+export const sendData = async(newSettings, dispatch) => {
+  window.parent.api.setTemplate(templateID, newSettings, () => {
+    // If response...
+    fetchData(dispatch)
+  })
 }
 
 export const TemplateProvider = ({children}) => {
@@ -59,5 +77,8 @@ export const TemplateProvider = ({children}) => {
     </TemplateContext.Provider>
   )
 }
+
+export const closeBuilder = () => console.log('Closing!')
+// Tiene que llamar
 
 export const useTemplate = () => useContext(TemplateContext)

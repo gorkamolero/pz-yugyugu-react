@@ -1,14 +1,36 @@
 export default {
   templateID: 3,
-  sections: [
-		{
-			title: 'Cabecera',
-			settings: [1, 2, 3, 4]
-		},
-		{
-			title: 'Editable fields',
-			settings: [5, 6]
-		}
+  tabs: [
+    {
+      id: 1,
+      title: 'Content'
+    },
+    {
+      id: 2,
+      title: 'Style'
+    }
+  ],
+  sections: [    
+    {
+      title: 'Head',
+      tabID: 2,
+      settings: [5, 6]
+    },
+    {
+      title: 'Font',
+      tabID: 2,
+      settings: [2, 3, 4]
+    },
+    {
+      title: 'Banner content',
+      tabID: 1,
+      settings: [10, 11]
+    },
+    {
+      title: 'Banner style',
+      tabID: 2,
+      settings: [7, 8, 9]
+    },
 	],
   settings: {
     1: {
@@ -27,19 +49,45 @@ export default {
       value: 'https://fonts.googleapis.com/css?family=Raleway&display=swap'
     },
     4: {
-      title: 'Logo URL',
+      title: 'Font family',
+      type: 'text',
+      value: 'Raleway'
+    },
+    5: {
+      title: 'Logo Image',
       type: 'url',
       value: 'https://driftt.imgix.net/https%3A%2F%2Fdriftt.imgix.net%2Fhttps%253A%252F%252Fs3.amazonaws.com%252Fcustomer-api-avatars-prod%252F186636%252Fd3287564b6f8da6e8f8616e371d147c13c76gf8xupe5%3Ffit%3Dmax%26fm%3Dpng%26h%3D200%26w%3D200%26s%3Db80c260bb3c75ce2c26828c955634a76?fit=max&fm=png&h=200&w=200&s=0f78bb2bbe004a9220a65e95f5041130'
     },
-    5: {
-      type: 'text',
-      title: 'Texto 1',
-      value: 'aklsdjflkasjdklfjlkadsfj'
-    },
     6: {
+      title: 'Logo width',
+      type: 'slider',
+      value: 160
+    },
+
+    7: {
+      title: 'Banner image',
+      type: 'url',
+      value: 'http://i.imgur.com/nwNZ0TW.png%22%7D'
+    },
+    8: {
+      title: 'Banner image width',
+      type: 'slider',
+      value: 170
+    },
+    9: {
+      title: 'Banner background',
+      type: 'color',
+      value: '#f3f3f3'
+    },
+    10: {
+      title: 'Banner title',
       type: 'text',
-      title: 'Texto 2',
-      value: 'asdlfjkasldkfjlkasjlkfja'
-    }
+      value: 'Article Title'
+    },
+    11: {
+      title: 'Banner description',
+      type: 'text',
+      value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet ipsum consequat.'
+    },
   },
 }

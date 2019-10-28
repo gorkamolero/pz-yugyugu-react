@@ -7,7 +7,7 @@
         {"title":"Editable fields","settings":[5,6]}
       ],
       "settings":{
-        "1":{"title":"Company name","type":"text","value":"Pickzenio"},
+        "1":{"title":"Company name","type":"text","value":"GORKA"},
         "2":{"title":"Font name","type":"text","value":"Raleway"},
         "3":{
           "title":"Font URL",

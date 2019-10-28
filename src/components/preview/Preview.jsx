@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTemplate } from '../../state/Template'
-import { Fab } from '@material-ui/core'
+import { ButtonGroup, Button, Grid } from '@material-ui/core'
 import { Smartphone, Laptop } from '@material-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -10,15 +10,32 @@ function Preview(props) {
   const [data] = useTemplate()
   const [view, setView] = useState('desktop')
   return (
-    <div className="control">
+    <div className="control" style={{ padding: '24px' }}>
       <nav className="controlNav viewNav">
-        <Fab onClick={() => setView('mobile')}> <Smartphone /> </Fab>
-        <Fab onClick={() => setView('desktop')}> <Laptop /> </Fab>
+        <Grid container>
+          <ButtonGroup>
+            <Button
+              className={view === 'mobile' ? 'active' : ''}
+              onClick={() => setView('mobile')}
+              startIcon={<Smartphone />}
+            >
+              Mobile
+            </Button>
+            <Button
+              className={view === 'desktop' ? 'active' : ''}
+              onClick={() => setView('desktop')}
+              startIcon={<Laptop />}
+            >
+              Desktop
+            </Button>
+          </ButtonGroup>
+        </Grid>
       </nav>
+
       <div className={`controlContainer preview ${view}`}>
         {
           data && data.html
-          ? <iframe title="Preview" srcdoc={data.html} frameBorder="0" />
+          ? <iframe title="Preview" srcDoc={data.html} frameBorder="0" />
           : (
           <Scrollbars autoHide style={{width: '100%', height: '100%'}}>  
             <PreviewSkeleton />
