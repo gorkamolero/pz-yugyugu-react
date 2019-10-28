@@ -28,7 +28,7 @@ const Nav = () => {
                   variant="outlined"
                   disabled={!(data.hasOwnProperty('changed'))}
                   startIcon={<Save />}
-                  onClick={sendData(data.changed, dispatch)}
+                  onClick={() => sendData(data.changed, dispatch)}
                 >
                     Save
                 </Button>
@@ -38,7 +38,7 @@ const Nav = () => {
                   variant="outlined"
                   color="primary"
                   startIcon={<Close />}
-                  onClick={closeBuilder(dispatch)}
+                  onClick={() => closeBuilder(dispatch)}
                 >
                     Exit
                 </Button>

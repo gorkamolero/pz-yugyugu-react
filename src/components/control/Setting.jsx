@@ -28,7 +28,7 @@ const Setting = ({
   )
 
   if (type === 'color') return (
-    <Grid justify="content">
+    <>
       <Typography variant="body1" gutterBottom>{title}: {value}</Typography>
       <Button variant="outlined" onClick={() => setModalOpen(true)}>Choose Color</Button>
       <br/>
@@ -39,7 +39,7 @@ const Setting = ({
           onChangeComplete={(color, event) => onChange(color.hex)}
         />
       </Dialog>
-    </Grid>
+    </>
   )
   
   if (type === 'slider') return (
