@@ -41,22 +41,27 @@ export const TemplateReducer = (state, {type, id, value, data}) => {
 }
 
 export const fetchData = async (dispatch) => {
+  if (!window || !window.parent || !window.parent.api) return
+  
   dispatch({ type: 'fetchStart' });
 
   window.parent.api.getTemplate(templateID, (data) => {
-    dispatch({
-      type: 'receiveData',
-      data
-    })
+    if (!data) return
+    
+    dispatch({ type: 'receiveData', data })
 
     dispatch({ type: 'fetchEnd' })
   })  
 }
 
 export const getPreview = async (newSettings, dispatch) => {
+  if (!window || !window.parent || !window.parent.api) return
+
   dispatch({ type: 'fetchStart' })
 
   window.parent.api.getPreview(templateID, newSettings, (data) => {
+    if(!data) return
+
     dispatch({ type: 'setPreview', data })
 
     dispatch({ type: 'fetchEnd' })
@@ -64,6 +69,8 @@ export const getPreview = async (newSettings, dispatch) => {
 }
 
 export const sendData = async(newSettings, dispatch) => {
+  if (!window || !window.parent || !window.parent.api) return
+
   window.parent.api.setTemplate(templateID, newSettings, () => {
     // If response...
     fetchData(dispatch)
@@ -79,6 +86,7 @@ export const TemplateProvider = ({children}) => {
 }
 
 export const closeBuilder = () => {
+  if (!window || !window.parent || !window.parent.api) return
   window.parent.api.closeBuilder()
 }
 // Tiene que llamar
