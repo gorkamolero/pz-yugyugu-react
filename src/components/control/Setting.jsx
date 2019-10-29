@@ -1,7 +1,51 @@
 import React from 'react'
-import { TextField, Slider, Tooltip, Typography, Button, Dialog, Grid } from '@material-ui/core'
+import styled from 'styled-components'
+import { Grid, TextField, Slider, Tooltip, Typography, Dialog, Fab } from '@material-ui/core'
+import { Palette } from '@material-ui/icons'
 import { ChromePicker as ColorPicker } from 'react-color'
 import { useTemplate } from '../../state/Template'
+
+const Fabulous = styled(Fab)`
+  background-color: ${props => props.bgColor};
+  &:hover { background-color: ${props => props.bgColor}; }
+`
+
+const FabColor = (props) => {
+  const [value, setValue] = React.useState(props.value)
+  const [modalOpen, setModalOpen] = React.useState(false)
+  
+  const onChange = (color) => {
+    props.onChange(color)
+    setValue(color)
+  }
+
+  return (
+    <Grid
+      container
+      style={{ paddingTop: '24px' }}
+      justify="flex-start"
+      alignItems="center"
+      spacing={2}
+    >
+      <Fabulous
+        onClick={() => setModalOpen(true)}
+        bgColor={value}
+        size="small"
+      >
+        <Palette />
+      </Fabulous>
+
+      <Typography variant="body1" style={{ marginLeft: '12px' }}>{props.title}: {value}</Typography>
+
+      <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
+        <ColorPicker
+          color={value}
+          onChangeComplete={(color, event) => onChange(color.hex)}
+        />
+      </Dialog>
+    </Grid>
+  )
+}
 
 const Setting = ({
   id,
@@ -10,7 +54,6 @@ const Setting = ({
   value,
 }) => {
   const [, dispatch] = useTemplate()
-  const [modalOpen, setModalOpen] = React.useState(false)
 
   const onChange = (value) => dispatch({ type: 'updateField', id, value })
 
@@ -22,28 +65,18 @@ const Setting = ({
       value={value}
       fullWidth
       margin="normal"
-      variant="outlined"
+      // variant="outlined"
+      key={id}
       onChange={(e) => onChange(e.target.value)}
     />
   )
 
   if (type === 'color') return (
-    <>
-      <Typography variant="body1" gutterBottom>{title}: {value}</Typography>
-      <Button variant="outlined" onClick={() => setModalOpen(true)}>Choose Color</Button>
-      <br/>
-      
-      <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
-        <ColorPicker
-          color={value}
-          onChangeComplete={(color, event) => onChange(color.hex)}
-        />
-      </Dialog>
-    </>
+    <FabColor title={title} value={value} onChange={onChange} />
   )
   
   if (type === 'slider') return (
-    <>
+    <div style={{ paddingTop: '24px' }}>
       <Typography variant="body1" gutterBottom>{title}: {value}px</Typography>
       <Slider
         // color="inherit"
@@ -53,7 +86,7 @@ const Setting = ({
         defaultValue={value}
         onChangeCommitted={(e, value) => onChange(value)}
       />
-    </>
+    </div>
   )
 
   else return null

@@ -24,13 +24,23 @@ export default {
     {
       title: 'Banner content',
       tabID: 1,
-      settings: [10, 11]
+      settings: [10, 11, 12]
     },
     {
       title: 'Banner style',
       tabID: 2,
       settings: [7, 8, 9]
     },
+    {
+      title: 'Buttons',
+      tabID: 1,
+      settings: [12, 13]
+    },
+    {
+      title: 'Text and buttons',
+      tabID: 2,
+      settings: [14, 15, 16, 17]
+    }
 	],
   settings: {
     1: {
@@ -74,7 +84,7 @@ export default {
       type: 'slider',
       value: 170
     },
-    9: {
+    9 : {
       title: 'Banner background',
       type: 'color',
       value: '#f3f3f3'
@@ -89,5 +99,35 @@ export default {
       type: 'text',
       value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet ipsum consequat.'
     },
+    12: {
+      title: 'Banner button text',
+      type: 'text',
+      value: 'READ MORE'
+    },
+    13: {
+      title: 'CTA',
+      type: 'text',
+      value: 'READ MORE'
+    },
+    14: {
+      title: 'Font color',
+      type: 'color',
+      value: '#000'
+    },
+    15: {
+      title: 'Buttons text color',
+      type: '#fff',
+      value: 'READ MORE'
+    },
+    16: {
+      title: 'Buttons back color',
+      type: '#8ccaca',
+      value: 'READ MORE'
+    },
+    17: {
+      title: 'Buttons radius',
+      type: 'slider',
+      value: 40
+    }
   },
 }
