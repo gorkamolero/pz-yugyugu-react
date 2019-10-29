@@ -1,4 +1,6 @@
 import React from 'react'
+import { useTemplate, fetchData } from '../state/Template'
+
 import { Scrollbars } from 'react-custom-scrollbars'
 
 import Nav from '../components/Nav'

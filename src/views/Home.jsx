@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { useTemplate, fetchData } from '../state/Template'
 
 
 function Home() {
