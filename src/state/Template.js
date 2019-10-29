@@ -78,7 +78,9 @@ export const TemplateProvider = ({children}) => {
   )
 }
 
-export const closeBuilder = () => console.log('Closing!')
+export const closeBuilder = () => {
+  window.parent.api.closeBuilder()
+}
 // Tiene que llamar
 
 export const useTemplate = () => useContext(TemplateContext)
