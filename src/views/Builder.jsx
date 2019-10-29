@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTemplate, fetchData } from '../state/Template'
+import { useSnackbar } from 'notistack'
 
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -9,10 +10,17 @@ import Control from '../components/control/Control'
 
 function Builder() {
   const [, dispatch] = useTemplate()
+  const { enqueueSnackbar } = useSnackbar()
 
   React.useEffect(() => {
-    fetchData(dispatch)
-  }, [dispatch])
+    async function fetcher() {
+      const fetch = await fetchData(dispatch)
+      if (fetch && fetch.status) enqueueSnackbar(fetch.message, { variant: fetch.status })
+    }
+    
+    fetcher()
+    
+  }, [dispatch, enqueueSnackbar])
 
   return (
     <>

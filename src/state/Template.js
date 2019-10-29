@@ -41,7 +41,10 @@ export const TemplateReducer = (state, {type, id, value, data}) => {
 }
 
 export const fetchData = async (dispatch) => {
-  if (!window || !window.parent || !window.parent.api) return
+  if (!window || !window.parent || !window.parent.api) return {
+    status: 'error',
+    message: 'No data found. Please refresh and try again!'
+  }
   
   dispatch({ type: 'fetchStart' });
 
@@ -55,7 +58,10 @@ export const fetchData = async (dispatch) => {
 }
 
 export const getPreview = async (newSettings, dispatch) => {
-  if (!window || !window.parent || !window.parent.api) return
+  if (!window || !window.parent || !window.parent.api) return {
+    status: 'error',
+    message: `Preview couldn't be loaded. Please refresh and try again!`
+  }
 
   dispatch({ type: 'fetchStart' })
 
@@ -68,8 +74,11 @@ export const getPreview = async (newSettings, dispatch) => {
   })
 }
 
-export const sendData = async(newSettings, dispatch) => {
-  if (!window || !window.parent || !window.parent.api) return
+export const sendData = async (newSettings, dispatch) => {
+  if (!window || !window.parent || !window.parent.api) return {
+    status: 'error',
+    message: `Data didn't save. Please refresh and try again!`
+  }
 
   window.parent.api.setTemplate(templateID, newSettings, () => {
     // If response...
@@ -86,7 +95,10 @@ export const TemplateProvider = ({children}) => {
 }
 
 export const closeBuilder = () => {
-  if (!window || !window.parent || !window.parent.api) return
+  if (!window || !window.parent || !window.parent.api) return {
+    status: 'error',
+    message: `Builder can't be closed. Please refresh the page`
+  }
   window.parent.api.closeBuilder()
 }
 // Tiene que llamar

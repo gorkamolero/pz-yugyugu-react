@@ -1,11 +1,24 @@
 import React from 'react'
+import { useSnackbar } from 'notistack'
+
 import { AppBar, Toolbar, Typography, Button, Grid  } from '@material-ui/core'
 import { Save, Close } from '@material-ui/icons'
 import { useTemplate, sendData, closeBuilder } from '../state/Template'
 
 const Nav = () => {
   const [data, dispatch] = useTemplate()
+  const { enqueueSnackbar } = useSnackbar()
   
+  const save = async () => {
+    const fetch = await sendData(data.changed, dispatch)
+    if (fetch && fetch.status) enqueueSnackbar(fetch.message, { variant: fetch.status })
+  }
+
+  const exit = async () => {
+    const fetch = await closeBuilder(dispatch)
+    if (fetch && fetch.status) enqueueSnackbar(fetch.message, { variant: fetch.status })
+  }
+
   return (
     <AppBar position="static" color="inherit" className="appbar">
       <Toolbar>
@@ -28,7 +41,7 @@ const Nav = () => {
                   variant="outlined"
                   disabled={!(data.hasOwnProperty('changed'))}
                   startIcon={<Save />}
-                  onClick={() => sendData(data.changed, dispatch)}
+                  onClick={() => save()}
                 >
                     Save
                 </Button>
@@ -38,7 +51,7 @@ const Nav = () => {
                   variant="outlined"
                   color="primary"
                   startIcon={<Close />}
-                  onClick={() => closeBuilder(dispatch)}
+                  onClick={() => exit()}
                 >
                     Exit
                 </Button>
