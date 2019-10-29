@@ -25,7 +25,11 @@ function App() {
   return (
     <TemplateProvider>
       <ThemeProvider theme={theme}>
-        <SnackbarProvider maxSnack={3}>
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          autoHideDuration={3000}
+        >
           <Router>
             <div className="App" id="pz-email-builder">
               <Switch>
