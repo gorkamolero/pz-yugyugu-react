@@ -6,8 +6,8 @@ import { Palette } from '@material-ui/icons'
 import { ChromePicker as ColorPicker } from 'react-color'
 
 const Fabulous = styled(Fab)`
-  background-color: ${props => props.bgColor};
-  &:hover { background-color: ${props => props.bgColor}; }
+  background-color: ${props => props.bgcolor};
+  &:hover { background-color: ${props => props.bgcolor}; }
 `
 
 const FabColor = (props) => {
@@ -30,7 +30,7 @@ const FabColor = (props) => {
     >
       <Fabulous
         onClick={() => setModalOpen(true)}
-        bgColor={value}
+        bgcolor={value}
         size="small"
       >
         <Palette />
