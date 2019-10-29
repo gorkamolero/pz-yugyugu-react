@@ -6,8 +6,11 @@ import Preview from '../components/preview/Preview'
 import Control from '../components/control/Control'
 
 function Builder() {
+  const [, dispatch] = useTemplate()
 
-  // FETCH!
+  React.useEffect(() => {
+    fetchData(dispatch)
+  }, [dispatch])
 
   return (
     <>

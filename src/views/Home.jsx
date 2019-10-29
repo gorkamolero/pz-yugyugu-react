@@ -4,11 +4,6 @@ import { useTemplate, fetchData } from '../state/Template'
 
 
 function Home() {
-  const [, dispatch] = useTemplate()
-
-  React.useEffect(() => {
-    fetchData(dispatch)
-  }, [dispatch])
   
   return (
     <header className="App-header">
