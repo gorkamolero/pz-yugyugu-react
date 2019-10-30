@@ -44,7 +44,7 @@ const Tab = ({ index, tab, children }) => (
 
 const Section = ({ title, settings }) => (
   <>
-    <section style={{ padding: '24px 0' }}>
+    <section style={{ padding: '24px 0', maxWidth: '60ch' }}>
       {title.length > 0 && <Typography variant="h6">{title}</Typography>}
       {
         settings.map((props) => (

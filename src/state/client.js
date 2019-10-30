@@ -71,7 +71,7 @@ export default {
     6: {
       title: 'Logo width',
       type: 'slider',
-      value: 160
+      value: "160px"
     },
 
     7: {
@@ -82,7 +82,7 @@ export default {
     8: {
       title: 'Banner image width',
       type: 'slider',
-      value: 170
+      value: "170px"
     },
     9 : {
       title: 'Banner background',
@@ -127,7 +127,7 @@ export default {
     17: {
       title: 'Buttons radius',
       type: 'slider',
-      value: 40
+      value: "40px"
     }
   },
 }

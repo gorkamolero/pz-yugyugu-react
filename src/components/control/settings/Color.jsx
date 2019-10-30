@@ -10,6 +10,10 @@ const Fabulous = styled(Fab)`
   &:hover { background-color: ${props => props.bgcolor}; }
 `
 
+const Gridder = styled(Grid)`
+  padding: 24px 0 12px;
+`
+
 const FabColor = (props) => {
   const [value, setValue] = React.useState(props.value)
   const [modalOpen, setModalOpen] = React.useState(false)
@@ -20,10 +24,9 @@ const FabColor = (props) => {
   }
 
   return (
-    <Grid
+    <Gridder
       component="article"
       container
-      style={{ paddingTop: '24px' }}
       justify="flex-start"
       alignItems="center"
       spacing={2}
@@ -44,7 +47,7 @@ const FabColor = (props) => {
           onChangeComplete={(color, event) => onChange(color.hex)}
         />
       </Dialog>
-    </Grid>
+    </Gridder>
   )
 }
 
