@@ -96,8 +96,8 @@ export default {
     },
     11: {
       title: 'Banner description',
-      type: 'text',
-      value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet ipsum consequat.'
+      type: 'html',
+      value: '<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Curabitur sit amet ipsum consequat.'
     },
     12: {
       title: 'Banner button text',
